@@ -48,13 +48,13 @@ export default function ProjectSnapshot() {
   return (
     <section
       id="project-snapshot"
-      className="relative z-20 flex min-h-screen items-center overflow-hidden bg-[var(--bg)] px-6 py-12 text-[var(--text)] sm:py-14"
+      className="relative z-20 flex min-h-[100svh] items-start overflow-hidden bg-[var(--bg)] px-4 py-8 text-[var(--text)] sm:items-center sm:px-6 sm:py-14"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,var(--glass),transparent_32%),radial-gradient(circle_at_85%_10%,var(--soft-blue),transparent_28%)] opacity-30" />
 
       <div className="relative mx-auto w-full max-w-7xl">
         <motion.div
-          className="grid gap-6 lg:min-h-[520px] lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch"
+          className="grid gap-4 sm:gap-6 lg:min-h-[520px] lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch"
           initial={{ opacity: 0, y: 34 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.25 }}
@@ -64,39 +64,41 @@ export default function ProjectSnapshot() {
             <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[var(--accent)]">
               Project Snapshot
             </p>
-            <h2 className="mt-4 max-w-2xl text-3xl font-normal leading-tight text-[var(--heading)] md:text-5xl">
+            <h2 className="mt-3 max-w-2xl text-[1.7rem] font-normal leading-tight text-[var(--heading)] sm:mt-4 sm:text-3xl md:text-5xl">
               A premium Mohali address shaped around space and light.
             </h2>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--muted)]">
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--muted)] sm:mt-4 sm:text-base sm:leading-7">
               The Medallion Aurum combines open planning, Mivan technology, podium parking
               and curated lifestyle amenities in Sector 67, Mohali.
             </p>
 
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            <div className="mt-4 grid grid-cols-2 gap-2 sm:mt-6 sm:gap-3">
               {stats.map((item, index) => (
                 <motion.div
                   key={item.label}
-                  className="snapshot-card group border border-[var(--line)] p-4 transition-colors duration-300 hover:border-[var(--gold-dark)]"
+                  className="snapshot-card group min-h-[86px] border border-[var(--line)] p-3 transition-colors duration-300 hover:border-[var(--gold-dark)] sm:min-h-0 sm:p-4"
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   whileHover={{ y: -3 }}
                   viewport={{ once: false }}
                   transition={{ delay: index * 0.08, duration: 0.45 }}
                 >
-                  <div className="flex items-end gap-2">
-                    <p className="text-3xl font-semibold text-[var(--heading)]">{item.value}</p>
-                    <p className="pb-1 text-[10px] uppercase tracking-[0.24em] text-[var(--accent)]">
+                  <div className="flex flex-wrap items-end gap-x-2 gap-y-0">
+                    <p className="text-2xl font-semibold leading-none text-[var(--heading)] sm:text-3xl">
+                      {item.value}
+                    </p>
+                    <p className="pb-0.5 text-[8px] uppercase tracking-[0.18em] text-[var(--accent)] sm:pb-1 sm:text-[10px] sm:tracking-[0.24em]">
                       {item.suffix}
                     </p>
                   </div>
-                  <p className="mt-2 text-sm text-[var(--muted)]">{item.label}</p>
+                  <p className="mt-2 text-xs leading-4 text-[var(--muted)] sm:text-sm">{item.label}</p>
                 </motion.div>
               ))}
             </div>
           </div>
 
           <motion.div
-            className="relative min-h-[420px] overflow-hidden border border-[var(--line)] bg-[var(--glass)] p-3 backdrop-blur-xl lg:min-h-full"
+            className="relative min-h-[360px] overflow-hidden border border-[var(--line)] bg-[var(--glass)] p-2 backdrop-blur-xl sm:min-h-[420px] sm:p-3 lg:min-h-full"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.25 }}
@@ -111,29 +113,31 @@ export default function ProjectSnapshot() {
             />
             <div className="snapshot-media-overlay absolute inset-0 bg-[linear-gradient(180deg,transparent,var(--bg))]" />
 
-            <div className="absolute inset-x-3 bottom-3 grid gap-2 sm:grid-cols-2">
+            <div className="absolute inset-x-2 bottom-2 grid grid-cols-2 gap-2 sm:inset-x-3 sm:bottom-3">
               {highlights.map((item, index) => {
                 const Icon = item.icon;
 
                 return (
                   <motion.div
                     key={item.title}
-                    className="snapshot-highlight group border border-[var(--line)] p-3 backdrop-blur-xl transition-colors duration-300 hover:border-[var(--gold-dark)]"
+                    className="snapshot-highlight group border border-[var(--line)] p-2 backdrop-blur-xl transition-colors duration-300 hover:border-[var(--gold-dark)] sm:p-3"
                     initial={{ opacity: 0, y: 18 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     whileHover={{ y: -3 }}
                     viewport={{ once: false }}
                     transition={{ delay: 0.12 + index * 0.05, duration: 0.42 }}
                   >
-                    <div className="mb-2 flex items-center gap-2">
-                      <span className="inline-flex h-8 w-8 items-center justify-center border border-[var(--line)] text-[var(--accent)]">
-                        <Icon size={15} />
+                    <div className="flex items-center gap-2 sm:mb-2">
+                      <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center text-[var(--accent)] sm:h-8 sm:w-8">
+                        <Icon size={14} />
                       </span>
-                      <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--heading)]">
+                      <h3 className="text-[9px] font-medium uppercase leading-3 tracking-[0.1em] text-[var(--heading)] sm:text-xs sm:leading-normal sm:tracking-[0.16em]">
                         {item.title}
                       </h3>
                     </div>
-                    <p className="text-xs leading-5 text-[var(--muted)]">{item.text}</p>
+                    <p className="snapshot-highlight-copy mt-1 text-[10px] leading-4 text-[var(--muted)] sm:mt-0 sm:text-xs sm:leading-5">
+                      {item.text}
+                    </p>
                   </motion.div>
                 );
               })}
@@ -141,6 +145,14 @@ export default function ProjectSnapshot() {
           </motion.div>
         </motion.div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .snapshot-highlight-copy {
+            display: none;
+          }
+        }
+      `}</style>
     </section>
   );
 }

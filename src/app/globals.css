@@ -19,6 +19,8 @@
   --gold-dark: #9a7527;
   --soft-blue: #dce9f7;
   --blue-accent: #9fc5dc;
+  --success: #17d98b;
+  --success-soft: rgba(23, 217, 139, 0.12);
   --line: rgba(255, 255, 255, 0.14);
   --glass: rgba(255, 255, 255, 0.06);
   --hero-vignette: rgba(5, 5, 5, 0.38);
@@ -47,6 +49,8 @@
   --gold-dark: #604511;
   --soft-blue: #eaf3fb;
   --blue-accent: #6f98b4;
+  --success: #0f9f68;
+  --success-soft: rgba(15, 159, 104, 0.13);
   --line: rgba(18, 18, 18, 0.14);
   --glass: rgba(255, 255, 255, 0.72);
   --hero-vignette: rgba(255, 255, 255, 0);
@@ -76,6 +80,12 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
+}
+
+button,
+[role="button"],
+a[href] {
+  cursor: pointer;
 }
 
 h1,
@@ -162,4 +172,16 @@ h3 {
 :root {
   --font-body: "Aptos", "Inter", "Segoe UI Variable Text", "Segoe UI", Arial, Helvetica, sans-serif;
   --font-display: Georgia, "Times New Roman", Times, serif;
+}
+
+@media (max-width: 640px) {
+  .mobile-section-width {
+    width: min(100%, 360px);
+  }
+
+  main section:not(#hero) h2 {
+    font-size: 1.7rem !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0 !important;
+  }
 }

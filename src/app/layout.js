@@ -4,6 +4,9 @@ export const metadata = {
   title: "The Medallion Aurum | Luxury Residences",
   description:
     "A premium single-page landing experience for The Medallion Aurum luxury residences.",
+  icons: {
+    icon: "/favicon/The Medallion_Aurum_Favicon.jpg",
+  },
 };
 
 export default function RootLayout({ children }) {
