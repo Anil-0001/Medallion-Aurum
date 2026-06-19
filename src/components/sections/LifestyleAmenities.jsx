@@ -73,6 +73,7 @@ export default function LifestyleAmenities() {
   const [modalItem, setModalItem] = useState(null);
   const [touchStartX, setTouchStartX] = useState(null);
   const didSwipeRef = useRef(false);
+  const didMountTabsRef = useRef(false);
   const tabsRailRef = useRef(null);
   const tabRefs = useRef({});
 
@@ -96,6 +97,11 @@ export default function LifestyleAmenities() {
   }, [activeTabId]);
 
   useEffect(() => {
+    if (!didMountTabsRef.current) {
+      didMountTabsRef.current = true;
+      return;
+    }
+
     tabRefs.current[activeTabId]?.scrollIntoView({
       behavior: "smooth",
       block: "nearest",

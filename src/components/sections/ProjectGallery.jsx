@@ -143,6 +143,7 @@ export default function ProjectGallery() {
   const [modalItem, setModalItem] = useState(null);
   const [touchStartX, setTouchStartX] = useState(null);
   const didSwipeRef = useRef(false);
+  const didMountTabsRef = useRef(false);
   const tabRefs = useRef({});
 
   const activeTab = useMemo(
@@ -160,6 +161,11 @@ export default function ProjectGallery() {
   }, [activeTabId]);
 
   useEffect(() => {
+    if (!didMountTabsRef.current) {
+      didMountTabsRef.current = true;
+      return;
+    }
+
     tabRefs.current[activeTabId]?.scrollIntoView({
       behavior: "smooth",
       block: "nearest",

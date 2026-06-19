@@ -1254,6 +1254,15 @@ export default function AurumStructuredSlider() {
           color: rgba(255, 255, 255, 0.82);
         }
 
+        .aurum-structured-slider {
+          height: 100vh;
+          height: 100svh;
+          height: 100dvh;
+          min-height: 100vh;
+          min-height: 100svh;
+          min-height: 100dvh;
+        }
+
         .aurum-final-ctas {
           position: relative;
           z-index: 12;
@@ -1427,10 +1436,10 @@ export default function AurumStructuredSlider() {
 
           .aurum-icon-rail {
             right: 12px;
-            top: auto;
-            bottom: 78px;
-            grid-auto-flow: column;
-            transform: none;
+            top: 50%;
+            bottom: auto;
+            grid-auto-flow: row;
+            transform: translateY(-50%);
           }
 
           .aurum-icon-step {

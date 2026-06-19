@@ -1,4 +1,5 @@
 import Header from "@/components/layout/Header";
+import ScrollManager from "@/components/common/ScrollManager";
 import Hero from "@/components/sections/Hero";
 import AurumStructuredSlider from "@/components/sections/AurumStructuredSlider";
 import ProjectSnapshot from "@/components/sections/ProjectSnapshot";
@@ -26,6 +27,7 @@ import Footer from "@/components/layout/Footer";
 export default function Home() {
   return (
     <>
+      <ScrollManager />
       <Header />
       <main>
         <Hero />

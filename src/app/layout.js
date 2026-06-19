@@ -16,6 +16,29 @@ export default function RootLayout({ children }) {
       data-theme="dark"
       className="h-full antialiased"
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                if (window.location.hash) return;
+                try {
+                  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+                  window.scrollTo(0, 0);
+                  var forceTop = function () {
+                    if (!window.location.hash) window.scrollTo(0, 0);
+                  };
+                  requestAnimationFrame(forceTop);
+                  [50, 150, 350, 750, 1500, 2600, 4200].forEach(function (delay) {
+                    setTimeout(forceTop, delay);
+                  });
+                  window.addEventListener("pageshow", forceTop);
+                } catch (error) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-full">{children}</body>
     </html>
   );
