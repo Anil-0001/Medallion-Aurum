@@ -12,30 +12,32 @@ import {
   MessageCircle,
   ShieldCheck,
 } from "lucide-react";
+import { useLeadCapture } from "@/components/common/LeadCaptureProvider";
+import { useTheme } from "@/hooks/useTheme";
 
 const essentials = [
   {
     title: "Brochure",
     copy: "Project overview, highlights and lifestyle",
-    image: "/structslider/struct4.jpg",
-    href: "/downloads/medallion-aurum-brochure.txt",
-    fileName: "The-Medallion-Aurum-Brochure.txt",
+    image: "brochure.png",
+    href: "/downloads/medallion-aurum-brochure-premium.pdf",
+    fileName: "The-Medallion-Aurum-Brochure-Premium.pdf",
     icon: FileText,
   },
   {
     title: "Floor Plan & Site Plan",
     copy: "Layout clarity and planning structure",
-    image: "/structslider/struct3.jpg",
-    href: "/downloads/medallion-aurum-floor-plan-site-plan.txt",
-    fileName: "The-Medallion-Aurum-Floor-Plan-Site-Plan.txt",
+    image: "Floor Plan & Site Plan.png",
+    href: "/downloads/medallion-aurum-floor-plan-site-plan-premium.pdf",
+    fileName: "The-Medallion-Aurum-Floor-Plan-Site-Plan-Premium.pdf",
     icon: LayoutGrid,
   },
   {
     title: "Price List & Payment Plan",
     copy: "Current pricing and payment structure",
-    image: "/hero/hero2.jpg",
-    href: "/downloads/medallion-aurum-price-payment-plan.txt",
-    fileName: "The-Medallion-Aurum-Price-Payment-Plan.txt",
+    image: "Price List & Payment Plan.png",
+    href: "/downloads/medallion-aurum-price-list-payment-plan-premium.pdf",
+    fileName: "The-Medallion-Aurum-Price-List-Payment-Plan-Premium.pdf",
     icon: IndianRupee,
   },
 ];
@@ -47,6 +49,62 @@ const trustPoints = [
 
 export default function ProjectEssentials() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [selectedDownload, setSelectedDownload] = useState(null);
+  const { theme } = useTheme();
+  const { hasCapturedLead, captureLead } = useLeadCapture();
+  const brochureThemeFolder = theme === "light" ? "light mode" : "dark mode";
+
+  const triggerDownload = (item) => {
+    const link = document.createElement("a");
+    link.href = item.href;
+    link.download = item.fileName;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  };
+
+  const handleDownloadClick = (event, item, index) => {
+    setActiveIndex(index);
+
+    if (hasCapturedLead) {
+      return;
+    }
+
+    event.preventDefault();
+    setSelectedDownload(item);
+  };
+
+  const submitDownloadForm = (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get("name")?.toString().trim() || "Visitor";
+    const phone = formData.get("phone")?.toString().trim() || "";
+    const email = formData.get("email")?.toString().trim() || "";
+    const requestedDocument = selectedDownload?.title ?? "Project Essentials";
+    const message = [
+      "Hello, I want to access The Medallion Aurum project document.",
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      email ? `Email: ${email}` : null,
+      `Requested document: ${requestedDocument}`,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    captureLead();
+    setSelectedDownload(null);
+
+    if (selectedDownload) {
+      triggerDownload(selectedDownload);
+    }
+
+    window.open(
+      `https://wa.me/917009247378?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
 
   return (
     <section
@@ -85,24 +143,23 @@ export default function ProjectEssentials() {
           transition={{ duration: 0.74, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="essentials-media relative flex min-h-[285px] items-center justify-center overflow-hidden p-4 sm:min-h-[340px] sm:p-6 lg:min-h-[430px] lg:p-9">
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,var(--glass),transparent_46%)] opacity-60" />
-            <div className="essentials-frame relative aspect-[1.38/1] w-full max-w-[540px] overflow-hidden border border-[var(--line)] shadow-[0_30px_90px_rgba(0,0,0,0.34)]">
+            <div className="essentials-frame relative aspect-[1.38/1] w-full max-w-[540px] overflow-hidden border border-[var(--line)] shadow-[0_30px_90px_rgba(0,0,0,0.2)]">
               {essentials.map((item, index) => (
                 <Image
                   key={item.title}
-                  src={item.image}
+                  src={`/brochure essentials/${brochureThemeFolder}/${item.image}`}
                   alt={`${item.title} preview`}
                   fill
                   priority={index === 0}
+                  quality={90}
                   sizes="(min-width: 1024px) 44vw, 92vw"
-                  className={`object-cover transition-all duration-700 ease-out ${
+                  className={`object-contain transition-opacity duration-300 ease-out ${
                     activeIndex === index
                       ? "scale-100 opacity-100"
-                      : "scale-[1.04] opacity-0"
+                      : "scale-100 opacity-0"
                   }`}
                 />
               ))}
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(5,5,5,0.36))]" />
             </div>
           </div>
 
@@ -124,6 +181,7 @@ export default function ProjectEssentials() {
                     key={item.title}
                     href={item.href}
                     download={item.fileName}
+                    onClick={(event) => handleDownloadClick(event, item, index)}
                     onMouseEnter={() => setActiveIndex(index)}
                     onFocus={() => setActiveIndex(index)}
                     onTouchStart={() => setActiveIndex(index)}
@@ -177,6 +235,38 @@ export default function ProjectEssentials() {
         </motion.div>
       </div>
 
+      {selectedDownload ? (
+        <div
+          className="essentials-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Unlock project document"
+        >
+          <button
+            type="button"
+            className="essentials-modal-backdrop"
+            aria-label="Close document access form"
+            onClick={() => setSelectedDownload(null)}
+          />
+          <form className="essentials-form" onSubmit={submitDownloadForm}>
+            <button
+              type="button"
+              className="essentials-close"
+              aria-label="Close"
+              onClick={() => setSelectedDownload(null)}
+            >
+              x
+            </button>
+            <span>Private Access</span>
+            <h3>Get {selectedDownload.title}</h3>
+            <input required type="text" name="name" placeholder="Your name" />
+            <input required type="tel" name="phone" placeholder="Phone number" />
+            <input type="email" name="email" placeholder="Email address" />
+            <button type="submit">Submit & Download</button>
+          </form>
+        </div>
+      ) : null}
+
       <style>{`
         .project-essentials {
           min-height: 100vh;
@@ -197,7 +287,7 @@ export default function ProjectEssentials() {
         }
 
         .essentials-media {
-          background: linear-gradient(145deg, rgba(5, 5, 5, 0.9), rgba(11, 10, 8, 0.78));
+          background: transparent;
         }
 
         .essentials-panel {
@@ -208,7 +298,7 @@ export default function ProjectEssentials() {
 
         .essentials-frame {
           border-radius: 18px;
-          background: var(--header);
+          background: transparent;
         }
 
         .essential-option {
@@ -268,6 +358,94 @@ export default function ProjectEssentials() {
           color: #050505;
         }
 
+        .essentials-modal {
+          position: fixed;
+          inset: 0;
+          z-index: 100;
+          display: grid;
+          place-items: center;
+          padding: 20px;
+        }
+
+        .essentials-modal-backdrop {
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.68);
+          backdrop-filter: blur(8px);
+        }
+
+        .essentials-form {
+          position: relative;
+          z-index: 1;
+          width: min(100%, 390px);
+          border: 1px solid rgba(214, 178, 95, 0.42);
+          border-radius: 18px;
+          background:
+            radial-gradient(circle at 50% 0%, rgba(214, 178, 95, 0.18), transparent 44%),
+            #11100d;
+          padding: 28px;
+          box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+        }
+
+        .essentials-close {
+          position: absolute;
+          right: 12px;
+          top: 10px;
+          width: 32px;
+          height: 32px;
+          border: 1px solid rgba(214, 178, 95, 0.24);
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.06);
+          color: rgba(255, 255, 255, 0.72);
+          font-size: 20px;
+          line-height: 1;
+          transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+        }
+
+        .essentials-close:hover {
+          border-color: rgba(244, 211, 111, 0.78);
+          background: rgba(244, 211, 111, 0.14);
+          color: var(--accent-strong);
+        }
+
+        .essentials-form span {
+          color: var(--accent-strong);
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+        }
+
+        .essentials-form h3 {
+          margin-top: 8px;
+          color: #ffffff;
+          font-family: var(--font-display);
+          font-size: 28px;
+          font-weight: 400;
+        }
+
+        .essentials-form input {
+          width: 100%;
+          min-height: 45px;
+          margin-top: 12px;
+          border: 1px solid rgba(214, 178, 95, 0.28);
+          border-radius: 10px;
+          background: rgba(255, 255, 255, 0.08);
+          padding: 0 14px;
+          color: #ffffff;
+          outline: none;
+        }
+
+        .essentials-form button[type="submit"] {
+          width: 100%;
+          min-height: 48px;
+          margin-top: 16px;
+          border-radius: 999px;
+          background: var(--accent-strong);
+          color: #080808;
+          font-weight: 700;
+        }
+
         [data-theme="light"] .essentials-glow {
           background:
             radial-gradient(circle at 24% 34%, rgba(154, 117, 39, 0.13), transparent 30%),
@@ -282,7 +460,7 @@ export default function ProjectEssentials() {
         }
 
         [data-theme="light"] .essentials-media {
-          background: linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(234, 243, 251, 0.72));
+          background: transparent;
         }
 
         [data-theme="light"] .essentials-panel {
@@ -295,6 +473,32 @@ export default function ProjectEssentials() {
         [data-theme="light"] .essential-option:focus-visible .essential-get,
         [data-theme="light"] .essential-option.is-active .essential-get {
           color: #ffffff;
+        }
+
+        [data-theme="light"] .essentials-form {
+          background:
+            radial-gradient(circle at 50% 0%, rgba(154, 117, 39, 0.14), transparent 44%),
+            #ffffff;
+        }
+
+        [data-theme="light"] .essentials-form h3 {
+          color: var(--heading);
+        }
+
+        [data-theme="light"] .essentials-form input {
+          background: rgba(247, 251, 255, 0.9);
+          color: var(--heading);
+        }
+
+        [data-theme="light"] .essentials-close {
+          background: rgba(154, 117, 39, 0.06);
+          color: var(--muted);
+        }
+
+        [data-theme="light"] .essentials-close:hover {
+          border-color: rgba(154, 117, 39, 0.78);
+          background: rgba(154, 117, 39, 0.12);
+          color: var(--accent);
         }
 
         @media (max-width: 1023px) {
@@ -418,6 +622,24 @@ export default function ProjectEssentials() {
             min-height: 36px;
             padding-inline: 10px;
             white-space: nowrap;
+          }
+
+          .essentials-form {
+            padding: 22px 18px 18px;
+          }
+
+          .essentials-form h3 {
+            font-size: 24px;
+          }
+
+          .essentials-form input {
+            min-height: 40px;
+            margin-top: 9px;
+          }
+
+          .essentials-form button[type="submit"] {
+            min-height: 43px;
+            margin-top: 12px;
           }
         }
       `}</style>

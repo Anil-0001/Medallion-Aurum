@@ -103,10 +103,11 @@ export default function EnquiryPreview() {
       <div className="relative mx-auto grid w-full max-w-7xl items-stretch gap-4 sm:gap-7 lg:max-w-6xl lg:grid-cols-2">
         <div className="enquiry-media relative min-h-[260px] overflow-hidden border shadow-[0_22px_70px_rgba(0,0,0,0.22)] sm:min-h-[320px] lg:min-h-[400px]">
           <Image
-            src="/structslider/struct3.jpg"
+            src="/enquiry/enquiry.jpg"
             alt="Medallion Aurum private residence interior"
             fill
             sizes="(min-width: 1024px) 48vw, 100vw"
+            quality={74}
             className="object-cover"
           />
           <div className="enquiry-media-overlay absolute inset-0" />

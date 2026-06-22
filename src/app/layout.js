@@ -14,9 +14,32 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       data-theme="dark"
+      suppressHydrationWarning
       className="h-full antialiased"
     >
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                try {
+                  var themeKey = "medallion-aurum-theme";
+                  var sourceKey = "medallion-aurum-theme-source";
+                  var source = window.localStorage.getItem(sourceKey);
+                  var storedTheme = window.localStorage.getItem(themeKey);
+                  var now = new Date();
+                  var ist = new Date(now.getTime() + 330 * 60 * 1000);
+                  var hour = ist.getUTCHours();
+                  var scheduledTheme = hour >= 7 && hour < 19 ? "light" : "dark";
+                  var nextTheme = source === "manual" && (storedTheme === "light" || storedTheme === "dark")
+                    ? storedTheme
+                    : scheduledTheme;
+                  document.documentElement.dataset.theme = nextTheme;
+                } catch (error) {}
+              })();
+            `,
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

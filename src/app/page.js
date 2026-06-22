@@ -1,5 +1,7 @@
 import Header from "@/components/layout/Header";
 import ScrollManager from "@/components/common/ScrollManager";
+import { LeadCaptureProvider } from "@/components/common/LeadCaptureProvider";
+import ThemeScheduleManager from "@/components/common/ThemeScheduleManager";
 import Hero from "@/components/sections/Hero";
 import AurumStructuredSlider from "@/components/sections/AurumStructuredSlider";
 import ProjectSnapshot from "@/components/sections/ProjectSnapshot";
@@ -28,31 +30,34 @@ export default function Home() {
   return (
     <>
       <ScrollManager />
+      <ThemeScheduleManager />
       <Header />
-      <main>
-        <Hero />
-        <ProjectSnapshot />
-        <About />
-        <Density />
-        <Story />
-        <AurumStructuredSlider />
-        <EnquiryPreview />
-        <FloorPlans />
-        <PlansLayouts />
-        <TransparentPricing />
-        <PremiumSpecifications />
-        <ProjectGallery />
-        <PrimeLocation />
-        <InvestmentPotential />
-        <LifestyleAmenities />
-        <ConstructionProgress />
-        <PropertyInterest />
-        <BuyerTestimonials />
-        <AurumFaq />
-        <ProjectEssentials />
-        <SiteVisitMap />
-        <DeveloperSnapshot />
-      </main>
+      <LeadCaptureProvider>
+        <main>
+          <Hero />
+          <ProjectSnapshot />
+          <About />
+          <Density />
+          <Story />
+          <AurumStructuredSlider />
+          <EnquiryPreview />
+          <FloorPlans />
+          <PlansLayouts />
+          <TransparentPricing />
+          <PremiumSpecifications />
+          <ProjectGallery />
+          <PrimeLocation />
+          <InvestmentPotential />
+          <LifestyleAmenities />
+          <ConstructionProgress />
+          <PropertyInterest />
+          <BuyerTestimonials />
+          <AurumFaq />
+          <ProjectEssentials />
+          <SiteVisitMap />
+          <DeveloperSnapshot />
+        </main>
+      </LeadCaptureProvider>
       <Footer />
     </>
   );

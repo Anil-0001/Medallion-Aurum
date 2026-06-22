@@ -105,10 +105,11 @@ export default function ProjectSnapshot() {
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           >
             <Image
-              src="/hero/hero3.jpg"
+              src="/snapshot/snapshot.webp"
               alt="The Medallion Aurum project snapshot"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
+              quality={74}
               className="snapshot-media-image object-cover"
             />
             <div className="snapshot-media-overlay absolute inset-0 bg-[linear-gradient(180deg,transparent,var(--bg))]" />

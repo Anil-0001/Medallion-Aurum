@@ -26,6 +26,8 @@ import {
   Waves,
 } from "lucide-react";
 
+const STRUCT_SLIDER_VERSION = "fresh-20260620";
+
 const SLIDES = [
   {
     eyebrow: "The Aurum Arrival",
@@ -33,7 +35,7 @@ const SLIDES = [
     titleLine1: "A Landmark Address",
     titleLine2: "Crafted for Excellence",
     body: "Medallion Aurum is not just a residence, it is a statement of success designed for those who live above ordinary.",
-    image: "/structslider/struct1.jpg",
+    image: `/structslider/struct1.webp?v=${STRUCT_SLIDER_VERSION}`,
     cards: [
       { label: "Prime Location", icon: MapPin },
       { label: "Premium Living", icon: Crown },
@@ -46,7 +48,7 @@ const SLIDES = [
     titleLine1: "Connected to the",
     titleLine2: "City's Finest Destinations",
     body: "Seamless access to business hubs, lifestyle zones, premium retail and daily conveniences.",
-    image: "/structslider/struct2.jpg",
+    image: `/structslider/struct2.webp?v=${STRUCT_SLIDER_VERSION}`,
     cards: [
       { label: "Airport Access", icon: Plane },
       { label: "Business Hub", icon: Building2 },
@@ -59,7 +61,7 @@ const SLIDES = [
     titleLine1: "Spacious Homes with",
     titleLine2: "Luxury Detailing",
     body: "Elegant layouts, refined finishes and timeless architecture created for modern luxury living.",
-    image: "/structslider/struct3.jpg",
+    image: `/structslider/struct3.webp?v=${STRUCT_SLIDER_VERSION}`,
     cards: [
       { label: "Luxury Layouts", icon: Home },
       { label: "Modern Design", icon: LayoutGrid },
@@ -72,7 +74,7 @@ const SLIDES = [
     titleLine1: "Amenities Designed",
     titleLine2: "Around Your Lifestyle",
     body: "From wellness to celebrations, every space is crafted for elevated everyday living.",
-    image: "/structslider/struct4.jpg",
+    image: `/structslider/struct4.webp?v=${STRUCT_SLIDER_VERSION}`,
     cards: [
       { label: "Clubhouse", icon: Landmark },
       { label: "Pool Deck", icon: Waves },
@@ -85,7 +87,7 @@ const SLIDES = [
     titleLine1: "Skyline Views,",
     titleLine2: "Light and Privacy",
     body: "Designed around openness, natural light, skyline views and a refined sense of privacy.",
-    image: "/structslider/struct5.jpg",
+    image: `/structslider/struct5.webp?v=${STRUCT_SLIDER_VERSION}`,
     cards: [
       { label: "Open Spaces", icon: Trees },
       { label: "Sky Views", icon: Maximize },
@@ -98,7 +100,7 @@ const SLIDES = [
     titleLine1: "Experience Medallion",
     titleLine2: "Aurum Personally",
     body: "Book a private walkthrough and discover the address built for a privileged few.",
-    image: "/structslider/struct6.jpg",
+    image: `/structslider/struct6.webp?v=${STRUCT_SLIDER_VERSION}`,
     cards: [
       { label: "Site Visit", icon: UserRound },
       { label: "Brochure", icon: FileText },
@@ -364,15 +366,19 @@ export default function AurumStructuredSlider() {
             aria-hidden={!isActive}
           >
             <div className="aurum-bg">
-              <Image
-                src={slide.image}
-                alt=""
-                fill
-                sizes="100vw"
-                className="object-cover"
-                loading={index === 0 ? "eager" : "lazy"}
-                fetchPriority={index === 0 ? "high" : "auto"}
-              />
+              {isActive || exiting?.index === index ? (
+                <Image
+                  src={slide.image}
+                  alt=""
+                  fill
+                  sizes="100vw"
+                  className="object-cover"
+                  quality={72}
+                  priority={index === 0}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fetchPriority={index === 0 ? "high" : "auto"}
+                />
+              ) : null}
             </div>
             <div className="aurum-film" />
             <div className="aurum-grad-left" />

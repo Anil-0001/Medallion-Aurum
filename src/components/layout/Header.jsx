@@ -206,14 +206,13 @@ export default function Header() {
               <AnimatePresence>
                 {activeMega ? <HoverMegaPanel key={activeMega} activeLabel={activeMega} /> : null}
               </AnimatePresence>
-
-              <AnimatePresence>
-                <MegaMenu open={megaOpen} onClose={() => setMegaOpen(false)} />
-              </AnimatePresence>
             </motion.div>
           </motion.div>
         </div>
       </motion.header>
+      <AnimatePresence>
+        <MegaMenu open={megaOpen} onClose={() => setMegaOpen(false)} />
+      </AnimatePresence>
       <MobileMenu open={mobileOpen} logoSrc={logoSrc} onClose={() => setMobileOpen(false)} />
     </>
   );
@@ -265,7 +264,7 @@ const hoverMegaData = {
     eyebrow: "About Medallion",
     title: "A landmark address crafted for premium city living.",
     text: "Discover The Medallion Aurum's vision, location advantage and refined residential character.",
-    image: "/hero/hero1.jpg",
+    image: "/about/about.webp",
     cta: "View Story",
     href: "#about",
     stats: [
@@ -275,9 +274,9 @@ const hoverMegaData = {
       ["RERA", "Aligned"],
     ],
     items: [
-      { label: "Project overview", meta: "The Medallion Aurum", href: "#about", image: "/hero/hero1.jpg", icon: Home },
-      { label: "Developer snapshot", meta: "Legacy and trust", href: "#developer-snapshot", image: "/hero/hero2.jpg", icon: ShieldCheck },
-      { label: "Project essentials", meta: "Key buyer facts", href: "#project-essentials", image: "/hero/hero3.jpg", icon: Sparkles },
+      { label: "Project overview", meta: "The Medallion Aurum", href: "#about", image: "/about/about.webp", icon: Home },
+      { label: "Developer snapshot", meta: "Legacy and trust", href: "#developer-snapshot", image: "/snapshot/snapshot.webp", icon: ShieldCheck },
+      { label: "Project essentials", meta: "Key buyer facts", href: "#project-essentials", image: "/brochure essentials/dark mode/brochure.png", icon: Sparkles },
     ],
   },
   Plans: {
@@ -290,8 +289,8 @@ const hoverMegaData = {
     items: [
       { label: "3 BHK Unit Plan", meta: "Approx. 2000 Sq.Ft.", href: "#plans-layouts", image: "/plans/3BHK_Medallion_Aurum.webp", icon: Home },
       { label: "4 BHK Unit Plan", meta: "Approx. 2600 Sq.Ft.", href: "#plans-layouts", image: "/plans/4BHK_Medallion_Aurum.webp", icon: Building2 },
-      { label: "Site Plan", meta: "Community layout", href: "#plans-layouts", image: "/plans/site plan.jpg", icon: MapPinned },
-      { label: "Tower Plan", meta: "Floor plate preview", href: "#plans-layouts", image: "/plans/unit.jpg", icon: Gem },
+      { label: "Site Plan", meta: "Community layout", href: "#plans-layouts", image: "/plans/site plan.webp", icon: MapPinned },
+      { label: "Tower Plan", meta: "Floor plate preview", href: "#plans-layouts", image: "/plans/unit.webp", icon: Gem },
     ],
   },
   Location: {
@@ -303,90 +302,90 @@ const hoverMegaData = {
     href: "#prime-location",
     items: [
       { label: "Sector 67", meta: "Prime Mohali address", href: "#prime-location", image: "/maps/Location.webp", icon: MapPinned },
-      { label: "Airport Road", meta: "Fast access", href: "#prime-location", image: "/hero/hero2.jpg", icon: MapPinned },
-      { label: "Retail and schools", meta: "Daily convenience", href: "#prime-location", image: "/hero/hero3.jpg", icon: Sparkles },
-      { label: "Investment corridor", meta: "Growth potential", href: "#investment-potential", image: "/hero/hero4.jpg", icon: IndianRupee },
+      { label: "Airport Road", meta: "Fast access", href: "#prime-location", image: "/gallery/arrival/arrival2.jpg", icon: MapPinned },
+      { label: "Retail and schools", meta: "Daily convenience", href: "#prime-location", image: "/gallery/arrival/arrival6.jpg", icon: Sparkles },
+      { label: "Investment corridor", meta: "Growth potential", href: "#investment-potential", image: "/calculator/calculator.webp", icon: IndianRupee },
     ],
   },
   Price: {
     eyebrow: "Pricing & Investment",
     title: "Unlock floor-wise pricing and payment guidance.",
     text: "Start with visible base pricing, then unlock detailed floor-wise information.",
-    image: "/hero/hero4.jpg",
+    image: "/price/3bhk.webp",
     cta: "View Pricing",
     href: "#transparent-pricing",
     items: [
-      { label: "3 BHK Starting", meta: "Rs 1.54 Cr*", href: "#transparent-pricing", image: "/hero/hero4.jpg", icon: IndianRupee },
-      { label: "Floor-wise prices", meta: "Unlock details", href: "#transparent-pricing", image: "/hero/hero5.jpg", icon: LockIcon },
-      { label: "Payment plan", meta: "Guided discussion", href: "#transparent-pricing", image: "/plans/site plan.jpg", icon: Download },
+      { label: "3 BHK Starting", meta: "Rs 1.54 Cr*", href: "#transparent-pricing", image: "/price/3bhk.webp", icon: IndianRupee },
+      { label: "Floor-wise prices", meta: "Unlock details", href: "#transparent-pricing", image: "/price/4bhk.webp", icon: LockIcon },
+      { label: "Payment plan", meta: "Guided discussion", href: "#transparent-pricing", image: "/plans/site plan.webp", icon: Download },
     ],
   },
   Amenities: {
     eyebrow: "Lifestyle Amenities",
     title: "Wellness, leisure and everyday comfort inside the address.",
     text: "Explore clubhouse, wellness, security, green and family lifestyle features.",
-    image: "/hero/hero5.jpg",
+    image: "/amenities/club.jpg",
     cta: "Explore Amenities",
     href: "#lifestyle-amenities",
     items: [
-      { label: "Clubhouse", meta: "Social lifestyle", href: "#lifestyle-amenities", image: "/hero/hero5.jpg", icon: Sparkles },
-      { label: "Wellness zones", meta: "Daily balance", href: "#lifestyle-amenities", image: "/hero/hero1.jpg", icon: Gem },
-      { label: "Security", meta: "Gated peace", href: "#lifestyle-amenities", image: "/hero/hero2.jpg", icon: ShieldCheck },
-      { label: "Kids and family", meta: "Thoughtful leisure", href: "#lifestyle-amenities", image: "/hero/hero3.jpg", icon: Home },
+      { label: "Clubhouse", meta: "Social lifestyle", href: "#lifestyle-amenities", image: "/amenities/club.jpg", icon: Sparkles },
+      { label: "Wellness zones", meta: "Daily balance", href: "#lifestyle-amenities", image: "/amenities/fitness.jpg", icon: Gem },
+      { label: "Security", meta: "Gated peace", href: "#lifestyle-amenities", image: "/amenities/cctv.jpg", icon: ShieldCheck },
+      { label: "Kids and family", meta: "Thoughtful leisure", href: "#lifestyle-amenities", image: "/amenities/kids play.jpg", icon: Home },
     ],
   },
   Specification: {
     eyebrow: "Specifications",
     title: "Premium finishes and dependable construction details.",
     text: "Review structure, flooring, doors, plumbing, kitchen and electrical specifications.",
-    image: "/hero/hero3.jpg",
+    image: "/specification/kitchen.webp",
     cta: "View Specs",
     href: "#premium-specifications",
     items: [
-      { label: "Structure", meta: "Modern construction", href: "#premium-specifications", image: "/hero/hero3.jpg", icon: Building2 },
-      { label: "Flooring", meta: "Premium finish", href: "#premium-specifications", image: "/hero/hero1.jpg", icon: Gem },
-      { label: "Kitchen", meta: "Refined utility", href: "#premium-specifications", image: "/hero/hero4.jpg", icon: Sparkles },
-      { label: "Electrical", meta: "Modular details", href: "#premium-specifications", image: "/hero/hero5.jpg", icon: ShieldCheck },
+      { label: "Structure", meta: "Modern construction", href: "#premium-specifications", image: "/specification/waredore.webp", icon: Building2 },
+      { label: "Flooring", meta: "Premium finish", href: "#premium-specifications", image: "/specification/surface.webp", icon: Gem },
+      { label: "Kitchen", meta: "Refined utility", href: "#premium-specifications", image: "/specification/kitchen.webp", icon: Sparkles },
+      { label: "Electrical", meta: "Modular details", href: "#premium-specifications", image: "/specification/bathroom.webp", icon: ShieldCheck },
     ],
   },
   Gallery: {
     eyebrow: "Walkthrough",
     title: "Visual story of residences, towers and lifestyle spaces.",
     text: "Hover through the gallery previews and open the complete gallery section.",
-    image: "/hero/hero2.jpg",
+    image: "/gallery/arrival/arrival1.jpg",
     cta: "Open Gallery",
     href: "#project-gallery",
     items: [
-      { label: "Tower view", meta: "Facade", href: "#project-gallery", image: "/hero/hero2.jpg", icon: Camera },
-      { label: "Living spaces", meta: "Interiors", href: "#project-gallery", image: "/hero/hero1.jpg", icon: Camera },
-      { label: "Arrival", meta: "Premium entry", href: "#project-gallery", image: "/hero/hero3.jpg", icon: Camera },
-      { label: "Lifestyle", meta: "Amenities", href: "#project-gallery", image: "/hero/hero5.jpg", icon: Camera },
+      { label: "Tower view", meta: "Facade", href: "#project-gallery", image: "/gallery/arrival/arrival1.jpg", icon: Camera },
+      { label: "Living spaces", meta: "Interiors", href: "#project-gallery", image: "/gallery/residence/interior.jpg", icon: Camera },
+      { label: "Arrival", meta: "Premium entry", href: "#project-gallery", image: "/gallery/arrival/arrival3.jpg", icon: Camera },
+      { label: "Lifestyle", meta: "Amenities", href: "#project-gallery", image: "/gallery/lifestyle/club.jpg", icon: Camera },
     ],
   },
   Downloads: {
     eyebrow: "Downloads",
     title: "Brochure, floor plans and price guidance on request.",
     text: "Access project material and plan documents for a more informed conversation.",
-    image: "/plans/site plan.jpg",
+    image: "/plans/site plan.webp",
     cta: "View Documents",
     href: "#plans-layouts",
     items: [
-      { label: "Brochure", meta: "Project overview", href: "/downloads/medallion-aurum-brochure.txt", image: "/hero/hero1.jpg", icon: Download },
-      { label: "Floor plans", meta: "Layout clarity", href: "/downloads/medallion-aurum-floor-plan-site-plan.txt", image: "/plans/3BHK_Medallion_Aurum.webp", icon: Download },
-      { label: "Price plan", meta: "Payment guidance", href: "/downloads/medallion-aurum-price-payment-plan.txt", image: "/hero/hero4.jpg", icon: IndianRupee },
+      { label: "Brochure", meta: "Project overview", href: "/downloads/medallion-aurum-brochure-premium.pdf", image: "/brochure essentials/dark mode/brochure.png", icon: Download },
+      { label: "Floor plans", meta: "Layout clarity", href: "/downloads/medallion-aurum-floor-plan-site-plan-premium.pdf", image: "/brochure essentials/dark mode/Floor Plan & Site Plan.png", icon: Download },
+      { label: "Price plan", meta: "Payment guidance", href: "/downloads/medallion-aurum-price-list-payment-plan-premium.pdf", image: "/brochure essentials/dark mode/Price List & Payment Plan.png", icon: IndianRupee },
     ],
   },
   Contact: {
     eyebrow: "Private Visit",
     title: "Let us plan your site visit and pricing walkthrough.",
     text: "Share your interest and the advisory team will help with availability, pricing and visits.",
-    image: "/hero/hero5.jpg",
+    image: "/private assistance/assistance.webp",
     cta: "Contact Team",
     href: "#property-interest",
     items: [
-      { label: "Book site visit", meta: "Private walkthrough", href: "#property-interest", image: "/hero/hero5.jpg", icon: Phone },
-      { label: "Call expert", meta: "+91 96973-00066", href: "tel:+919697300066", image: "/hero/hero1.jpg", icon: Phone },
-      { label: "WhatsApp", meta: "+91 70092-47378", href: "https://wa.me/917009247378", image: "/hero/hero2.jpg", icon: Phone },
+      { label: "Book site visit", meta: "Private walkthrough", href: "#property-interest", image: "/private assistance/assistance.webp", icon: Phone },
+      { label: "Call expert", meta: "+91 96973-00066", href: "tel:+919697300066", image: "/enquiry/enquiry.jpg", icon: Phone },
+      { label: "WhatsApp", meta: "+91 70092-47378", href: "https://wa.me/917009247378", image: "/private assistance/assistance.webp", icon: Phone },
     ],
   },
 };

@@ -20,7 +20,7 @@ const plans = [
     kicker: "Family Luxury",
     title: "3 BHK Premium Floor",
     subtitle: "Spacious 3 BHK format planned for privacy, daylight and refined everyday living.",
-    image: "/hero/hero1.jpg",
+    image: "/floor plans/3bhk.jpg",
     imageAlt: "Premium living room interior at Medallion Aurum",
     stats: [
       { icon: Maximize2, label: "Configuration", value: "3 BHK" },
@@ -36,7 +36,7 @@ const plans = [
     kicker: "Large Format",
     title: "4 BHK Signature Floor",
     subtitle: "A larger home shaped around grand entertaining, family comfort and calm bedroom zones.",
-    image: "/hero/hero2.jpg",
+    image: "/floor plans/4bhk.jpg",
     imageAlt: "Luxury residential tower view at Medallion Aurum",
     stats: [
       { icon: Maximize2, label: "Configuration", value: "4 BHK" },
@@ -52,7 +52,7 @@ const plans = [
     kicker: "Sky Living",
     title: "Penthouse Collection",
     subtitle: "Exclusive top-tier residences designed for elevated views, private zones and rare address value.",
-    image: "/hero/hero3.jpg",
+    image: "/floor plans/penthouse.jpg",
     imageAlt: "Elevated premium residence view at Medallion Aurum",
     stats: [
       { icon: Crown, label: "Configuration", value: "Penthouse" },
@@ -119,6 +119,7 @@ export default function FloorPlans() {
               alt={activePlan.imageAlt}
               fill
               sizes="(max-width: 1024px) 100vw, 64vw"
+              quality={76}
               className="floor-image"
             />
             <div className="floor-image-shade" />

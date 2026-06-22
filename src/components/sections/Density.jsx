@@ -38,10 +38,11 @@ export default function Density() {
       className="relative flex min-h-[100svh] items-start overflow-hidden bg-[var(--bg)] px-4 py-8 text-[var(--text)] sm:items-center sm:px-6 sm:py-14"
     >
       <Image
-        src="/hero/hero1.jpg"
+        src="/density/density.jpg"
         alt="The Medallion Aurum low density living"
         fill
         sizes="100vw"
+        quality={74}
         className="object-cover"
       />
       <div className="density-overlay absolute inset-0 bg-[linear-gradient(90deg,var(--bg),rgba(5,5,5,0.46)_42%,rgba(5,5,5,0.68))]" />

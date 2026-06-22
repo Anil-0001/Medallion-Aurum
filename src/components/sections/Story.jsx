@@ -50,10 +50,11 @@ export default function Story() {
       className="relative flex min-h-[100svh] items-start overflow-hidden px-4 py-8 text-[var(--text)] sm:items-center sm:px-6 sm:py-14"
     >
       <Image
-        src="/hero/hero4.jpg"
+        src="/story/story.webp"
         alt="The Medallion Aurum story"
         fill
         sizes="100vw"
+        quality={74}
         className="object-cover"
       />
       <div className="story-overlay absolute inset-0 bg-[linear-gradient(90deg,var(--bg),transparent_54%,var(--bg))] opacity-60" />

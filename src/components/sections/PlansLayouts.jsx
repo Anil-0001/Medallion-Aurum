@@ -41,7 +41,7 @@ const planItems = [
       {
         id: "penthouse",
         label: "Penthouse",
-        image: "/plans/unit-4bhk.jpg",
+        image: "/plans/4BHK_Medallion_Aurum.webp",
         title: "Penthouse Layout Preview",
         eyebrow: "Penthouse Plan",
         area: "Limited Sky Residence",
@@ -58,7 +58,7 @@ const planItems = [
       {
         id: "site-master",
         label: "Site Plan",
-        image: "/plans/site plan.jpg",
+        image: "/plans/site plan.webp",
         title: "Master Site Planning",
         eyebrow: "Site Plan",
         area: "Integrated Community Plan",
@@ -75,7 +75,7 @@ const planItems = [
       {
         id: "typical",
         label: "Typical Floor",
-        image: "/plans/unit.jpg",
+        image: "/plans/unit.webp",
         title: "Typical Tower Floor Plan",
         eyebrow: "Typical Floor Plan",
         area: "Tower Core + Residence Plate",
@@ -95,7 +95,7 @@ const planItems = [
       {
         id: "sky",
         label: "Sky Level",
-        image: "/plans/unit-4bhk.jpg",
+        image: "/plans/unit-4bhk.webp",
         title: "Sky Level Preview",
         eyebrow: "Sky Residence Plan",
         area: "Penthouse-level planning",
@@ -229,6 +229,7 @@ export default function PlansLayouts() {
                 alt={`${activePlan.title} at The Medallion Aurum`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 58vw"
+                quality={82}
                 className="plans-image"
               />
               <div className="plans-image-shade" />

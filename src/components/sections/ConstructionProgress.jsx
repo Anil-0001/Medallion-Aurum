@@ -44,10 +44,11 @@ export default function ConstructionProgress() {
             transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
           >
             <Image
-              src="/hero/hero1.jpg"
+              src="/construction/construction.webp"
               alt="The Medallion Aurum construction progress building view"
               fill
               sizes="(min-width: 1024px) 58vw, 100vw"
+              quality={74}
               className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.045]"
             />
             <div className="construction-corner construction-corner-left" />

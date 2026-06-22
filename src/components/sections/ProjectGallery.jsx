@@ -13,32 +13,32 @@ const galleryTabs = [
     items: [
       {
         title: "Sunlit Living Lounge",
-        image: "/hero/hero2.jpg",
+        image: "/gallery/residence/sunlight.jpg",
         text: "A composed lounge moment with open proportions and soft natural light.",
       },
       {
         title: "Private Family Suite",
-        image: "/hero/hero4.jpg",
+        image: "/gallery/residence/private family.jpg",
         text: "A quiet bedroom view planned around comfort, privacy and everyday ease.",
       },
       {
         title: "Refined Kitchen Flow",
-        image: "/hero/hero1.jpg",
+        image: "/gallery/residence/kitchen.jpg",
         text: "Functional kitchen planning with a premium, clean-lined residential feel.",
       },
       {
         title: "Calm Dining Setting",
-        image: "/hero/hero3.jpg",
+        image: "/gallery/residence/calm seating.jpg",
         text: "A brighter family setting designed for slow evenings and easy hosting.",
       },
       {
         title: "Signature Interior Mood",
-        image: "/structslider/struct3.jpg",
+        image: "/gallery/residence/interior.jpg",
         text: "Aurum's interior mood balances material warmth with modern clarity.",
       },
       {
         title: "Open Home Perspective",
-        image: "/structslider/struct5.jpg",
+        image: "/gallery/residence/open home.jpg",
         text: "Light, volume and air remain the visual foundation of the home.",
       },
     ],
@@ -67,32 +67,32 @@ const galleryTabs = [
     items: [
       {
         title: "Aurum Arrival Court",
-        image: "/structslider/struct1.jpg",
+        image: "/gallery/arrival/arrival1.jpg",
         text: "A polished arrival frame for residents and guests.",
       },
       {
         title: "Prime Corridor Presence",
-        image: "/structslider/struct2.jpg",
+        image: "/gallery/arrival/arrival2.jpg",
         text: "A city-connected address close to key Mohali destinations.",
       },
       {
         title: "Tower Lifestyle View",
-        image: "/hero/hero5.jpg",
+        image: "/gallery/arrival/arrival3.jpg",
         text: "A luxury address designed with scale, privacy and presence.",
       },
       {
         title: "Landscape Edge",
-        image: "/hero/hero3.jpg",
+        image: "/gallery/arrival/arrival4.jpg",
         text: "Green transitions create a softer rhythm around the built form.",
       },
       {
         title: "Evening Facade Mood",
-        image: "/structslider/struct6.jpg",
+        image: "/gallery/arrival/arrival5.jpg",
         text: "A composed night-time view for a more cinematic arrival.",
       },
       {
         title: "Connected Address",
-        image: "/hero/hero2.jpg",
+        image: "/gallery/arrival/arrival6.jpg",
         text: "A strategic Sector 67 setting with faster access to daily essentials.",
       },
     ],
@@ -105,32 +105,32 @@ const galleryTabs = [
     items: [
       {
         title: "Club Life Preview",
-        image: "/structslider/struct4.jpg",
+        image: "/gallery/lifestyle/club.jpg",
         text: "Social, wellness and leisure zones planned for all age groups.",
       },
       {
         title: "Open Green Planning",
-        image: "/hero/hero1.jpg",
+        image: "/gallery/lifestyle/green planing.jpg",
         text: "A project language shaped around openness, air and greenery.",
       },
       {
         title: "Wellness Deck Mood",
-        image: "/section-7/poster.webp",
+        image: "/gallery/lifestyle/wellnes deck.jpg",
         text: "A visual pause for wellness-led community living.",
       },
       {
         title: "Private Walkthrough Frame",
-        image: "/structslider/struct6.jpg",
+        image: "/gallery/lifestyle/walkthrough frame.jpg",
         text: "Book a walkthrough to experience proportions and finishes in person.",
       },
       {
         title: "Premium Leisure Setting",
-        image: "/hero/hero5.jpg",
+        image: "/gallery/lifestyle/premium leisure.jpg",
         text: "Curated lifestyle layers help the address feel complete.",
       },
       {
         title: "Nature-Led Everyday",
-        image: "/structslider/struct5.jpg",
+        image: "/gallery/lifestyle/nature.jpg",
         text: "Open views and landscape pockets support a calmer daily routine.",
       },
     ],
@@ -1199,6 +1199,7 @@ function GalleryCard({ item, onOpen, priority = false }) {
         alt={item.title}
         fill
         sizes="(min-width: 1024px) 31vw, 92vw"
+        quality={74}
         className="object-cover"
         priority={priority}
       />
@@ -1251,7 +1252,7 @@ function GalleryModal({ item, onClose }) {
             </div>
           ) : (
             <div className="project-gallery-modal-image">
-              <Image src={item.image} alt={item.title} fill sizes="min(1040px, 100vw)" className="object-cover" />
+              <Image src={item.image} alt={item.title} fill sizes="min(1040px, 100vw)" quality={82} className="object-cover" />
             </div>
           )}
           <div className="project-gallery-modal-copy">

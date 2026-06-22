@@ -9,7 +9,7 @@ const specs = [
     code: "MK",
     title: "Modern Modular Kitchen",
     text: "Matte shutters, refined backsplash planning and concealed task lighting.",
-    image: "/hero/hero1.jpg",
+    image: "/specification/kitchen.webp",
     brandsUsed: "Hettich, Kajaria, Jaquar",
     details: [
       { label: "Storage", value: "Modular cabinetry with practical day-to-day storage planning" },
@@ -22,7 +22,7 @@ const specs = [
     code: "LB",
     title: "Luxury Bathroom",
     text: "Premium fittings, elegant surfaces and hotel-inspired private comfort.",
-    image: "/hero/hero2.jpg",
+    image: "/specification/bathroom.webp",
     brandsUsed: "Jaquar, Kajaria, Legrand",
     details: [
       { label: "Sanitaryware", value: "Premium WC, wash basin and bathroom fixture provision" },
@@ -35,7 +35,7 @@ const specs = [
     code: "LW",
     title: "Living & Wardrobe Finish",
     text: "Warm interior finishes selected for durability, calm and daily elegance.",
-    image: "/hero/hero3.jpg",
+    image: "/specification/waredore.webp",
     brandsUsed: "Asian Paints, Hettich, Havells",
     details: [
       { label: "Wall Finish", value: "Premium paint finish selected for refined interior mood" },
@@ -48,7 +48,7 @@ const specs = [
     code: "FS",
     title: "Flooring & Surface Detail",
     text: "Premium-grade flooring and wall finishes aligned with Aurum standards.",
-    image: "/hero/hero4.jpg",
+    image: "/specification/surface.webp",
     brandsUsed: "Kajaria, Asian Paints, Havells",
     details: [
       { label: "Flooring", value: "Premium-grade flooring planned for long-term durability" },
@@ -151,6 +151,7 @@ export default function PremiumSpecifications() {
                 alt={item.title}
                 fill
                 sizes="(min-width: 1024px) 36vw, 86vw"
+                quality={74}
                 className="object-cover"
                 priority={item.offset === 0}
               />
@@ -812,7 +813,7 @@ function SpecModal({ item, onClose }) {
         </button>
         <div className="premium-spec-modal-body">
           <div className="premium-spec-modal-image">
-            <Image src={item.image} alt={item.title} fill sizes="min(704px, 100vw)" className="object-cover" />
+            <Image src={item.image} alt={item.title} fill sizes="min(704px, 100vw)" quality={82} className="object-cover" />
           </div>
           <div className="premium-spec-modal-copy">
             <h3>{item.title}</h3>

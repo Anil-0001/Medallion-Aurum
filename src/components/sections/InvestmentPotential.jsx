@@ -77,10 +77,11 @@ export default function InvestmentPotential() {
         <div className="mt-7 grid gap-4 lg:grid-cols-[0.92fr_1fr]">
           <article className="investment-card investment-growth relative overflow-hidden border border-[var(--line)] p-4">
             <Image
-              src="/structslider/struct6.jpg"
+              src="/calculator/calculator.webp"
               alt="Mohali growth corridor"
               fill
               sizes="(min-width: 1024px) 46vw, 100vw"
+              quality={74}
               className="investment-growth-image object-cover"
             />
             <div className="investment-growth-overlay absolute inset-0" />

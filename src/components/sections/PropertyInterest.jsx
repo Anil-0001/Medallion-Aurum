@@ -13,10 +13,11 @@ export default function PropertyInterest() {
       className="property-interest-section sticky top-0 z-0 h-[100svh] overflow-hidden bg-[var(--bg)] px-4 text-[var(--text)] sm:px-6 lg:px-8"
     >
       <Image
-        src="/hero/hero1.jpg"
+        src="/private assistance/assistance.webp"
         alt="The Medallion Aurum property view"
         fill
         sizes="100vw"
+        quality={74}
         className="object-cover"
       />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.58),rgba(0,0,0,0.22),rgba(0,0,0,0.58))]" />

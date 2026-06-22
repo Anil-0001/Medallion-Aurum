@@ -12,6 +12,7 @@ import {
   Maximize2,
   ShieldCheck,
 } from "lucide-react";
+import { useLeadCapture } from "@/components/common/LeadCaptureProvider";
 
 const pricingPlans = [
   {
@@ -19,7 +20,7 @@ const pricingPlans = [
     label: "3 BHK",
     title: "3 BHK Premium Floor",
     selected: "1st Floor",
-    image: "/hero/hero4.jpg",
+    image: "/price/3bhk.webp",
     imageAlt: "Premium living room at The Medallion Aurum",
     stats: {
       area: "3 BHK",
@@ -39,7 +40,7 @@ const pricingPlans = [
     label: "4 BHK",
     title: "4 BHK Signature Floor",
     selected: "Premium Floor",
-    image: "/hero/hero2.jpg",
+    image: "/price/4bhk.webp",
     imageAlt: "Premium tower facade at The Medallion Aurum",
     stats: {
       area: "4 BHK",
@@ -59,7 +60,7 @@ const pricingPlans = [
     label: "Penthouse",
     title: "Penthouse Collection",
     selected: "Sky Residence",
-    image: "/hero/hero5.jpg",
+    image: "/price/penthouse.webp",
     imageAlt: "Luxury residence view at The Medallion Aurum",
     stats: {
       area: "Penthouse",
@@ -86,16 +87,16 @@ const detailCards = [
 export default function TransparentPricing() {
   const [activePlanId, setActivePlanId] = useState(pricingPlans[0].id);
   const [selectedFloorIndex, setSelectedFloorIndex] = useState(0);
-  const [isUnlocked, setIsUnlocked] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCelebrating, setIsCelebrating] = useState(false);
+  const { hasCapturedLead, captureLead } = useLeadCapture();
 
   const activePlan = useMemo(
     () => pricingPlans.find((plan) => plan.id === activePlanId) ?? pricingPlans[0],
     [activePlanId]
   );
   const selectedFloor = activePlan.floors[selectedFloorIndex] ?? activePlan.floors[0];
-  const selectedFloorUnlocked = isUnlocked || selectedFloor.visible;
+  const selectedFloorUnlocked = hasCapturedLead || selectedFloor.visible;
 
   const submitUnlockForm = (event) => {
     event.preventDefault();
@@ -115,7 +116,7 @@ export default function TransparentPricing() {
       .join("\n");
 
     setIsModalOpen(false);
-    setIsUnlocked(true);
+    captureLead();
     setIsCelebrating(true);
     window.setTimeout(() => setIsCelebrating(false), 1800);
     window.setTimeout(() => {
@@ -169,6 +170,7 @@ export default function TransparentPricing() {
                 alt={activePlan.imageAlt}
                 fill
                 sizes="(max-width: 1024px) 100vw, 58vw"
+                quality={76}
                 className="pricing-image"
               />
               <div className="pricing-image-shade" />
@@ -177,7 +179,7 @@ export default function TransparentPricing() {
 
             <div className="pricing-floor-grid">
               {activePlan.floors.map((floor, index) => {
-                const showPrice = isUnlocked || floor.visible;
+                const showPrice = hasCapturedLead || floor.visible;
 
                 return (
                   <button
@@ -238,11 +240,11 @@ export default function TransparentPricing() {
 
             <button
               type="button"
-              className={`pricing-unlock-btn${isUnlocked ? " unlocked" : ""}`}
-              onClick={() => (isUnlocked ? null : setIsModalOpen(true))}
+              className={`pricing-unlock-btn${hasCapturedLead ? " unlocked" : ""}`}
+              onClick={() => (hasCapturedLead ? null : setIsModalOpen(true))}
             >
-              {isUnlocked ? <LockOpen size={17} /> : <Lock size={17} />}
-              {isUnlocked ? "All Prices Unlocked" : "Unlock All Floor Prices"}
+              {hasCapturedLead ? <LockOpen size={17} /> : <Lock size={17} />}
+              {hasCapturedLead ? "All Prices Unlocked" : "Unlock All Floor Prices"}
             </button>
 
             <p className="pricing-note">

@@ -19,42 +19,42 @@ const amenities = [
   {
     id: "cctv",
     title: "CCTV Surveillance",
-    image: "/structslider/struct2.jpg",
+    image: "/amenities/cctv.jpg",
     category: "Security & Convenience",
     icon: Monitor,
   },
   {
     id: "clubhouse",
     title: "Clubhouse Lounge",
-    image: "/structslider/struct4.jpg",
+    image: "/amenities/club.jpg",
     category: "Recreation",
     icon: House,
   },
   {
     id: "fitness",
     title: "Fitness Studio",
-    image: "/hero/hero5.jpg",
+    image: "/amenities/fitness.jpg",
     category: "Wellness",
     icon: Dumbbell,
   },
   {
     id: "kids",
     title: "Kids Play Zone",
-    image: "/hero/hero3.jpg",
+    image: "/amenities/kids play.jpg",
     category: "Recreation",
     icon: Baby,
   },
   {
     id: "pool",
     title: "Indoor Pool",
-    image: "/section-7/poster.webp",
+    image: "/amenities/pool.jpg",
     category: "Wellness",
     icon: Waves,
   },
   {
     id: "garden",
     title: "Landscaped Gardens",
-    image: "/structslider/struct5.jpg",
+    image: "/amenities/garden.jpg",
     category: "Recreation",
     icon: Trees,
   },
@@ -797,6 +797,7 @@ function AmenityCard({ item, onOpen, priority = false }) {
         alt={item.title}
         fill
         sizes="(min-width: 1024px) 31vw, 92vw"
+        quality={74}
         className="object-cover"
         priority={priority}
       />
@@ -821,7 +822,7 @@ function AmenityModal({ item, onClose }) {
           </button>
         </div>
         <div className="lifestyle-modal-image">
-          <Image src={item.image} alt={item.title} fill sizes="min(1060px, 100vw)" className="object-cover" />
+          <Image src={item.image} alt={item.title} fill sizes="min(1060px, 100vw)" quality={82} className="object-cover" />
         </div>
       </div>
     </div>

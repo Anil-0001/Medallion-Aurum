@@ -37,10 +37,11 @@ export default function About() {
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           >
             <Image
-              src="/hero/hero2.jpg"
+              src="/about/about.webp"
               alt="About The Medallion Aurum"
               fill
               sizes="(min-width: 1024px) 48vw, 100vw"
+              quality={74}
               className="object-cover"
             />
             <div className="about-media-overlay absolute inset-0 bg-[linear-gradient(180deg,transparent,var(--bg))] opacity-75" />

@@ -7,35 +7,35 @@ import { ArrowUpRight, BadgeCheck, MapPin, Plane, ShieldCheck } from "lucide-rea
 
 const heroSlides = [
   {
-    image: "/hero/hero1.jpg",
+    image: "/hero/hero1.webp",
     eyebrow: "The Medallion Aurum",
     title: "Premium Low-Rise Living In Mohali",
     highlight: "Premium",
     copy: "A refined residential address shaped around space, privacy, and a calmer way to live.",
   },
   {
-    image: "/hero/hero2.jpg",
+    image: "/hero/hero2.webp",
     eyebrow: "PR-7 Airport Road | Sector 67 Mohali",
     title: "Live Connected To PR-7, Airport Road & Mohali",
     highlight: "PR-7",
     copy: "A well-connected luxury address for families who want faster airport access, daily essentials, and calm premium living.",
   },
   {
-    image: "/hero/hero3.jpg",
+    image: "/hero/hero3.webp",
     eyebrow: "Club Life | Open Planning",
     title: "Come Home To Light, Volume, Air & Nature",
     highlight: "Light",
     copy: "Inspired by The Medallion brand foundation, every residence is planned to feel open, refined, and deeply connected to landscape.",
   },
   {
-    image: "/hero/hero4.jpg",
+    image: "/hero/hero4.webp",
     eyebrow: "3+1 & 4+1 Super Luxury Homes",
     title: "The Sheer Abundance Of Space, Built Into Everyday Life",
     highlight: "Space",
     copy: "Spacious residences, curated amenities, and a premium Sector 67 setting shaped for privacy, presence, and comfort.",
   },
   {
-    image: "/hero/hero5.jpg",
+    image: "/hero/hero5.webp",
     eyebrow: "Medallion Aurum Mohali",
     title: "A Golden Address For People Who Notice Everything",
     highlight: "Golden",
@@ -95,6 +95,7 @@ export default function Hero() {
             fill
             priority={activeSlide === 0}
             loading={activeSlide === 0 ? "eager" : "lazy"}
+            quality={76}
             sizes="100vw"
             className="hero-image object-cover object-[58%_center] sm:object-center"
           />
